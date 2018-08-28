@@ -25,7 +25,7 @@ namespace Vidly.Controllers
             //return RedirectToAction("Contact", "Home", new { page = 1, sortBy = "name" });
 
             //View Data
-            //View data is a old approach and "Movie" is changed it will throughts a null error. Instead of this passing model is the best way.
+            //View data is a old approach and "Movie" is changed it will thoughts a null error. Instead of this passing model is the best way.
             //ViewData["Movie"] = movie;
             //return View();
 
@@ -64,13 +64,13 @@ namespace Vidly.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
-        //Example for custom route and the cusrom route is added in "RouteConfig.cs"
+        //Example for custom route and the custom route is added in "RouteConfig.cs"
         // GET: Movies/Released
         //Below Route is without constraints
         //[Route("movies/released/{year}/{month}")]
-        //Below Route is with constraints below regullar expression will accepts only 2 digit number for month
+        //Below Route is with constraints below regular expression will accepts only 2 digit number for month
         //[Route("movies/released/{year}/{month:regex(\\d{2})}")]
-        //Below Route is with multiple constraints below regullar expression will accepts only 2 digit number for month and range will be 1 to 12
+        //Below Route is with multiple constraints below regular expression will accepts only 2 digit number for month and range will be 1 to 12
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
