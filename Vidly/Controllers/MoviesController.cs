@@ -33,9 +33,9 @@ namespace Vidly.Controllers
 
             var customers = new List<Customer>
             {
-                new Customer{Name="Customer 1" },
-                new Customer{Name="Customer 2" },
-                new Customer{Name="Customer 3" }
+                new Customer{Id=1, Name="Customer 1" },
+                new Customer{Id=2, Name="Customer 2" },
+                new Customer{Id=3, Name="Customer 3" }
             };
 
             var viewModel = new RandomMovieViewModel
@@ -55,14 +55,14 @@ namespace Vidly.Controllers
 
         //This is for optional parameters
         // GET: Movies
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "name";
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
+        //public ActionResult Index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //        pageIndex = 1;
+        //    if (String.IsNullOrWhiteSpace(sortBy))
+        //        sortBy = "name";
+        //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        //}
 
         //Example for custom route and the cusrom route is added in "RouteConfig.cs"
         // GET: Movies/Released
@@ -75,6 +75,22 @@ namespace Vidly.Controllers
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
+        }
+
+        //For S2 Excersice
+        public ActionResult Index()
+        {
+            var movies = new List<Movie>
+            {
+                new Movie{Name="Shrek!"},
+                new Movie{Name="Dragon"}
+            };
+            var viewModel = new RandomMovieViewModel
+            {
+                Movies = movies
+            };
+
+            return View(viewModel);
         }
     }
 }
